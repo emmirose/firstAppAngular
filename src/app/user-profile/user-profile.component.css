@@ -1,0 +1,13 @@
+.age {
+  display: flex;
+  align-items: center;
+}
+
+.age button {
+  height : 2rem;
+  background-color: brown;
+  color: blanchedalmond;
+  border-radius: 4px;
+  border: none;
+  margin-left: 16px;
+}
