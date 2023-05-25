@@ -17,5 +17,6 @@ export class UserProfileComponent {
   toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
   }
+  songList: string[] = ["Alejandro", "Ne me quitte pas", "Le temps est bon", "Baby One more Time"];
 
 }

@@ -9,3 +9,7 @@
 </div>
 <p>{{user.quote}}</p>
 <input type="text" [(ngModel)]="user.quote">
+
+<ul>
+  <li *ngFor="let song of songList"> {{song}}</li>
+</ul>
