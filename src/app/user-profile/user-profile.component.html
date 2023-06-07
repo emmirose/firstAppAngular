@@ -1,15 +1,38 @@
-<h2>Fiche de contact</h2>
+<h2>Inscription</h2>
+<div class="container">
+  <div class ="elem">
+    <label>
+      Pseudo:
+        <input type="text" [formControl]="username">
+    </label>
+    <label>
+      Email:
+        <input type="email" [formControl]="email">
+    </label>
+    <label>
+      Mot de passe:
+        <input type="password" [formControl]="password">
+    </label>
+    <label>
+      N° et rue:
+        <input type="text" [formControl]="street">
+    </label>
+    <label>
+      Code postal:
+        <input type="text" [formControl]="zipcode">
+    </label>
+    <label>
+      Ville:
+        <input type="text" [formControl]="city">
+    </label>
+    <button (click) = "createUser()">M'inscrire</button>
+  </div>
 
-<img [src]="user.photo" [alt]="user.firstName">
-<h3>Nom : {{user.name}}</h3>
-<h3>Prénom : {{user.firstName}}</h3>
-<div class="age">
-<h3 [hidden] = "isShowDiv">Age : {{user.age}}</h3>
-<button (click)=toggleDisplayDiv()> Afficher/cacher mon âge </button>
+  <div *ngIf="isDisplayed" class="elem">
+  Mon profil :
+    <p> Pseudo: {{this.user.username}}</p>
+    <p>Email: {{this.user.email}} </p>
+    <p> Adresse: {{this.user.adress}} </p>
+  </div>
+
 </div>
-<p>{{user.quote}}</p>
-<input type="text" [(ngModel)]="user.quote">
-
-<ul>
-  <li *ngFor="let song of songList"> {{song}}</li>
-</ul>
