@@ -1,38 +1,35 @@
 <h2>Inscription</h2>
 <div class="container">
   <div class ="elem">
+    <form [formGroup]="userForm" (ngSubmit)="createUser()">
     <label>
       Pseudo:
-        <input type="text" [formControl]="username">
+        <input type="text" formControlName="username">
     </label>
-    <label>
-      Email:
-        <input type="email" [formControl]="email">
-    </label>
-    <label>
-      Mot de passe:
-        <input type="password" [formControl]="password">
-    </label>
+    <div formGroupName = "credentials">
+      <label>
+        Email:
+          <input type="email" formControlName="email">
+      </label>
+      <label>
+        Mot de passe:
+          <input type="password" formControlName="password">
+      </label>
+    </div>
     <label>
       N° et rue:
-        <input type="text" [formControl]="street">
+        <input type="text" formControlName="street">
     </label>
     <label>
       Code postal:
-        <input type="text" [formControl]="zipcode">
+        <input type="text" formControlName="zipcode">
     </label>
     <label>
       Ville:
-        <input type="text" [formControl]="city">
+        <input type="text" formControlName="city">
     </label>
-    <button (click) = "createUser()">M'inscrire</button>
-  </div>
-
-  <div *ngIf="isDisplayed" class="elem">
-  Mon profil :
-    <p> Pseudo: {{this.user.username}}</p>
-    <p>Email: {{this.user.email}} </p>
-    <p> Adresse: {{this.user.adress}} </p>
+    <button type="submit">M'inscrire</button>
+  </form>
   </div>
 
 </div>

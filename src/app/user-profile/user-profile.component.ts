@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,21 +9,25 @@ import { FormControl } from '@angular/forms';
 })
 export class UserProfileComponent {
   user!: User;
-  username = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
-  street = new FormControl('');
-  zipcode = new FormControl('');
-  city = new FormControl('');
-  isDisplayed = false
+  constructor(private fb: FormBuilder) {}
 
+  userForm = this.fb.group({
+    username: [''],
+    credentials: this.fb.group({
+      email: [''],
+      password: [''],
+    }),
+    street: [''],
+    zipcode: [''],
+    city: ['']
+  })
 
   createUser() {
+    console.log(this.userForm.value);
     this.user = new User (
-    this.username.value as string,
-    this.email.value as string,
-    this.password.value as string,
-    `${this.street.value}, ${this.zipcode.value}, ${this.city.value}`)
-    this.isDisplayed =true;
+    this.userForm.get('username')?.value as string,
+    this.userForm.get('credentials.email')?.value as string,
+    this.userForm.get('credentials.password')?.value as string,
+    `${this.userForm.get('street')?.value}, ${this.userForm.get('zipcode')?.value}, ${this.userForm.get('city')?.value}`)
   }
 }
